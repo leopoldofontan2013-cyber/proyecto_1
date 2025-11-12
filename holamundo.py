@@ -1,12 +1,12 @@
-from pybricks.hubs import PrimeHub
-from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
-from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
-from pybricks.robotics import DriveBase
-from pybricks.tools import wait, StopWatch
+from robot import Robot
 
-hub = PrimeHub()
+left_motor = Motor(Port.F, Direction.COUNTERCLOCKWISE)
+right_motor = Motor(Port.E)
 
-motorA = Motor(Port.A, Direction.CLOCKWISE)
-motorB = Motor(Port.F, Direction.COUNTERCLOCKWISE)
+r1 = Robot(left_motor, right_motor, 54, 142)
 
-run
+r1.straight(250)
+r1.beep(800, 500)
+r1.light_blink(Color.RED, 1000)
+
+
