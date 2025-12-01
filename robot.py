@@ -42,6 +42,18 @@ class Robot:
     def deshacer_historia(self):
         for inst in reversed(self.historia):
             self.deshacer(inst)
+    
+    def hacer(self, inst):
+        if inst[0] == 'straight':
+            distance =  inst[1][0]
+            self.straight(distance, guadar=False)
+        elif inst[0] == "turn":
+            angle = inst[1][0]
+            self.turn(-angle, guardar = False)
+
+    def hacer_historia(self, historia):
+        for inst in historia:
+            self.deshacer(inst)
 
 
     #Sonido

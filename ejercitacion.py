@@ -17,24 +17,28 @@ r2 = Robot(left_motor, right_motor, 56, 143)
 #r2.guardar_sensor('ultra', ultrasonido)
 r2.guardar_sensor('color', color)
 
-if r2.sensor('color').color() == Color.RED:
-    r2.beep(250, 1000)
-    r2.straight(900)
+freq = {
+    Color.RED: 250,
+    Color.BLUE: 1000,
+    Color.WHITE: 500,
+    Color.GREEN: 750,
+}
 
-if r2.sensor('color').color() == Color.GREEN:
-    r2.beep(500, 1000)
-    r2.turn(90)
-    r2.straight(850)
+# El robot comienza en la esquina 1 mirando al norte
+
+movimientos = {
+    Color.RED: [('turn',(90,)), ['straight', (850,)] ],
+    Color.WHITE: [('turn',(90,)), ['straight', (850,)] ],
+    Color.GREEN: [('turn',(90,)), ['straight', (850,)] ],
+    Color.BLUE: [('turn',(90,)), ['straight', (850,)] ],
+}
+
+while True:
+    sensor = r2.sensor('color').color()
+    print(sensor)
+    r2.beep(freq[sensor], 1000)
+    r2.hacer_historia(movimientos.get(sensor, []))    
     
-if r2.sensor('color').color() == Color.BLUE:
-    r2.beep(1000, 1000)
-    r2.turn(90)
-    r2.straight(900)
-
-if r2.sensor('color').color() == Color.YELLOW:
-    r2.beep(750, 1000)
-    r2.turn(90)
-    r2.straight(900)
 
 
 

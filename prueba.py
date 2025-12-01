@@ -5,6 +5,7 @@ from pybricks.robotics import DriveBase
 from pybricks.tools import wait, StopWatch
 
 from robot import Robot
+
 left_motor = Motor(Port.E, Direction.COUNTERCLOCKWISE)
 right_motor = Motor(Port.F, Direction.CLOCKWISE)
 ultrasonido = UltrasonicSensor(Port.C)
@@ -15,12 +16,12 @@ r2 = Robot(left_motor, right_motor, 56, 142)
 r2.guardar_sensor('ultra', ultrasonido)
 r2.guardar_sensor('color', color)
 
-sonidos = {
+sonidos = {}
     Color.RED: 800,
     Color.BLUE: 1000,
     Color.WHITE: 1200,
     Color.BLACK: 1400,
-}
+
 while True:
     c = r2.sensor('color').color()
     print(c)
